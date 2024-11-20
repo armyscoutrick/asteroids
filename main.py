@@ -1,14 +1,41 @@
 import pygame
+import sys
+from constants import *
 
-pygame.init()
-screen = pygame.display.set_mode((800, 600))
+def main():
+    print('Starting asteroids!')
+    print(f'Screen width: {SCREEN_WIDTH}')
+    print(f'Screen height: {SCREEN_HEIGHT}')
+    
+    pygame.init()
+    
+    
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    
+    
+    clock = pygame.time.Clock()
+    
+    
+    dt = 0
+    running = True
+    print('Starting game loop')
+    
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        
+        screen.fill((0, 0, 0))  
+        pygame.display.flip()
+        dt = clock.tick(60) / 1000
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    screen.fill((255, 0, 0))
-    pygame.display.flip()
+    pygame.quit()
+    sys.exit()
 
-pygame.quit()
+if __name__ == '__main__':
+    main()
+
+
+
+
+
